@@ -536,3 +536,55 @@ void ReportSummary()
     Console.WriteLine("Resumen general: total libros / disponibles / prestados...");
     Pause();
 }
+// ===================== 5) GUARDAR / CARGAR DATOS =====================
+void ShowPersistenceMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== GUARDAR / CARGAR DATOS =====");
+        Console.WriteLine("1. Guardar datos");
+        Console.WriteLine("2. Cargar datos");
+        Console.WriteLine("3. Reiniciar datos (vaciar todo)");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": SaveData(); break;
+            case "2": LoadData(); break;
+            case "3": ResetData(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void SaveData()
+{
+    Console.WriteLine("Guardando datos de libros, usuarios y préstamos...");
+    Pause();
+}
+
+void LoadData()
+{
+    Console.WriteLine("Cargando datos de libros, usuarios y préstamos...");
+    Pause();
+}
+
+bool ConfirmResetData()
+{
+    Console.Write("¿Seguro que deseas vaciar todos los datos? (S/N): ");
+    string answer = (Console.ReadLine() ?? "").Trim().ToUpper();
+    return answer == "S";
+}
+
+void ResetData()
+{
+    if (ConfirmResetData())
+        Console.WriteLine("Datos reiniciados.");
+    else
+        Console.WriteLine("Operación cancelada.");
+    Pause();
+}
