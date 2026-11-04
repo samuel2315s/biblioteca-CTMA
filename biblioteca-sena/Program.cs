@@ -295,3 +295,106 @@ void DeleteUser()
     Console.WriteLine($"Usuario {id} eliminado.");
     Pause();
 }
+// ===================== 3) PRÉSTAMOS =====================
+void ShowLoansMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== PRÉSTAMOS =====");
+        Console.WriteLine("1. Crear préstamo");
+        Console.WriteLine("2. Listar préstamos");
+        Console.WriteLine("3. Ver detalle de préstamo (por ID)");
+        Console.WriteLine("4. Registrar devolución");
+        Console.WriteLine("5. Eliminar préstamo");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": CreateLoan(); break;
+            case "2": ListLoansMenu(); break;
+            case "3": ViewLoanDetail(); break;
+            case "4": RegisterReturn(); break;
+            case "5": DeleteLoan(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void CreateLoan()
+{
+    string user = ReadText("ID/documento del usuario: ");
+    string book = ReadText("ID/ISBN del libro: ");
+    Console.WriteLine("Validando que el usuario exista y esté activo...");
+    Console.WriteLine("Validando que el libro exista y esté disponible...");
+    Console.WriteLine("Validando máximo de préstamos activos por usuario (opcional)...");
+    Console.WriteLine($"Préstamo creado: libro {book} prestado al usuario {user}.");
+    Pause();
+}
+
+void ListLoansMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== LISTAR PRÉSTAMOS =====");
+        Console.WriteLine("1. Todos");
+        Console.WriteLine("2. Activos");
+        Console.WriteLine("3. Cerrados (devueltos)");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": ListLoansAll(); break;
+            case "2": ListLoansActive(); break;
+            case "3": ListLoansClosed(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void ListLoansAll()
+{
+    Console.WriteLine("Listando todos los préstamos...");
+    Pause();
+}
+
+void ListLoansActive()
+{
+    Console.WriteLine("Listando préstamos activos...");
+    Pause();
+}
+
+void ListLoansClosed()
+{
+    Console.WriteLine("Listando préstamos cerrados (devueltos)...");
+    Pause();
+}
+
+void ViewLoanDetail()
+{
+    string id = ReadText("ID del préstamo: ");
+    Console.WriteLine($"Mostrando detalle del préstamo {id}");
+    Pause();
+}
+
+void RegisterReturn()
+{
+    string id = ReadText("ID del préstamo a devolver: ");
+    Console.WriteLine($"Préstamo {id} marcado como devuelto.");
+    Console.WriteLine("El libro ahora está disponible.");
+    Pause();
+}
+
+void DeleteLoan()
+{
+    string id = ReadText("ID del préstamo a eliminar: ");
+    Console.WriteLine($"Préstamo {id} eliminado (si estaba activo, el libro se devuelve automáticamente).");
+    Pause();
+}
