@@ -54,4 +54,143 @@ void ShowMainMenu()
             default: InvalidOption(); break;
         }
     } while (option != "6");
+    
+}
+// ===================== 1) LIBROS =====================
+void ShowBooksMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== LIBROS =====");
+        Console.WriteLine("1. Registrar libro");
+        Console.WriteLine("2. Listar libros");
+        Console.WriteLine("3. Ver detalle de libro (ID/ISBN)");
+        Console.WriteLine("4. Actualizar libro");
+        Console.WriteLine("5. Eliminar libro");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": RegisterBook(); break;
+            case "2": ListBooksMenu(); break;
+            case "3": ViewBookDetail(); break;
+            case "4": UpdateBookMenu(); break;
+            case "5": DeleteBook(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void RegisterBook()
+{
+    string title = ReadText("Título del libro: ");
+    Console.WriteLine($"Libro registrado: \"{title}\"");
+    Pause();
+}
+
+void ListBooksMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== LISTAR LIBROS =====");
+        Console.WriteLine("1. Listar todos");
+        Console.WriteLine("2. Listar disponibles");
+        Console.WriteLine("3. Listar prestados");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": ListBooksAll(); break;
+            case "2": ListBooksAvailable(); break;
+            case "3": ListBooksBorrowed(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void ListBooksAll()
+{
+    Console.WriteLine("Listando todos los libros...");
+    Pause();
+}
+
+void ListBooksAvailable()
+{
+    Console.WriteLine("Listando libros disponibles...");
+    Pause();
+}
+
+void ListBooksBorrowed()
+{
+    Console.WriteLine("Listando libros prestados...");
+    Pause();
+}
+
+void ViewBookDetail()
+{
+    string id = ReadText("ID/ISBN del libro: ");
+    Console.WriteLine($"Mostrando detalle del libro con ID/ISBN: {id}");
+    Pause();
+}
+
+void UpdateBookMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== ACTUALIZAR LIBRO =====");
+        Console.WriteLine("1. Editar título");
+        Console.WriteLine("2. Editar autor");
+        Console.WriteLine("3. Editar año / categoría");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": EditBookTitle(); break;
+            case "2": EditBookAuthor(); break;
+            case "3": EditBookYearCategory(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void EditBookTitle()
+{
+    string newTitle = ReadText("Nuevo título: ");
+    Console.WriteLine($"Título actualizado a: \"{newTitle}\"");
+    Pause();
+}
+
+void EditBookAuthor()
+{
+    string newAuthor = ReadText("Nuevo autor: ");
+    Console.WriteLine($"Autor actualizado a: \"{newAuthor}\"");
+    Pause();
+}
+
+void EditBookYearCategory()
+{
+    string year = ReadText("Nuevo año: ");
+    string category = ReadText("Nueva categoría: ");
+    Console.WriteLine($"Año ({year}) y categoría ({category}) actualizados.");
+    Pause();
+}
+
+void DeleteBook()
+{
+    string id = ReadText("ID/ISBN del libro a eliminar: ");
+    Console.WriteLine("Validando que el libro no esté prestado...");
+    Console.WriteLine($"Libro {id} eliminado.");
+    Pause();
 }
