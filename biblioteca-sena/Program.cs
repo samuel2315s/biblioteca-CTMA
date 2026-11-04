@@ -398,3 +398,141 @@ void DeleteLoan()
     Console.WriteLine($"Préstamo {id} eliminado (si estaba activo, el libro se devuelve automáticamente).");
     Pause();
 }
+// ===================== 4) BÚSQUEDAS Y REPORTES =====================
+void ShowSearchReportsMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== BÚSQUEDAS Y REPORTES =====");
+        Console.WriteLine("1. Buscar libro");
+        Console.WriteLine("2. Buscar usuario");
+        Console.WriteLine("3. Reportes");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": SearchBook(); break;
+            case "2": SearchUser(); break;
+            case "3": ReportsMenu(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void SearchBook()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== BUSCAR LIBRO =====");
+        Console.WriteLine("1. Por título");
+        Console.WriteLine("2. Por autor");
+        Console.WriteLine("3. Por ID/ISBN");
+        Console.WriteLine("4. Por categoría");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": SearchBookBy("título"); break;
+            case "2": SearchBookBy("autor"); break;
+            case "3": SearchBookBy("ID/ISBN"); break;
+            case "4": SearchBookBy("categoría"); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void SearchBookBy(string criteria)
+{
+    string value = ReadText($"Ingresa el {criteria} a buscar: ");
+    Console.WriteLine($"Libro buscado por {criteria}: \"{value}\"");
+    Console.WriteLine("Libro encontrado.");
+    Pause();
+}
+
+void SearchUser()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== BUSCAR USUARIO =====");
+        Console.WriteLine("1. Por nombre");
+        Console.WriteLine("2. Por ID/documento");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": SearchUserBy("nombre"); break;
+            case "2": SearchUserBy("ID/documento"); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void SearchUserBy(string criteria)
+{
+    string value = ReadText($"Ingresa el {criteria} a buscar: ");
+    Console.WriteLine($"Usuario buscado por {criteria}: \"{value}\"");
+    Console.WriteLine("Usuario encontrado.");
+    Pause();
+}
+
+void ReportsMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== REPORTES =====");
+        Console.WriteLine("1. Préstamos por usuario");
+        Console.WriteLine("2. Préstamos por libro");
+        Console.WriteLine("3. Préstamos vencidos");
+        Console.WriteLine("4. Resumen general");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": ReportByUser(); break;
+            case "2": ReportByBook(); break;
+            case "3": ReportOverdue(); break;
+            case "4": ReportSummary(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void ReportByUser()
+{
+    Console.WriteLine("Generando reporte de préstamos por usuario...");
+    Pause();
+}
+
+void ReportByBook()
+{
+    Console.WriteLine("Generando reporte de préstamos por libro...");
+    Pause();
+}
+
+void ReportOverdue()
+{
+    Console.WriteLine("Generando reporte de préstamos vencidos...");
+    Pause();
+}
+
+void ReportSummary()
+{
+    Console.WriteLine("Resumen general: total libros / disponibles / prestados...");
+    Pause();
+}
