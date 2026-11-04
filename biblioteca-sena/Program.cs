@@ -194,3 +194,104 @@ void DeleteBook()
     Console.WriteLine($"Libro {id} eliminado.");
     Pause();
 }
+// ===================== 2) USUARIOS =====================
+void ShowUsersMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== USUARIOS =====");
+        Console.WriteLine("1. Registrar usuario");
+        Console.WriteLine("2. Listar usuarios");
+        Console.WriteLine("3. Ver detalle de usuario (ID/documento)");
+        Console.WriteLine("4. Actualizar usuario");
+        Console.WriteLine("5. Eliminar usuario");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": RegisterUser(); break;
+            case "2": ListUsers(); break;
+            case "3": ViewUserDetail(); break;
+            case "4": UpdateUserMenu(); break;
+            case "5": DeleteUser(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void RegisterUser()
+{
+    string name = ReadText("Nombre del usuario: ");
+    Console.WriteLine($"Usuario registrado: {name}");
+    Pause();
+}
+
+void ListUsers()
+{
+    Console.WriteLine("Listando todos los usuarios...");
+    Pause();
+}
+
+void ViewUserDetail()
+{
+    string id = ReadText("ID/documento del usuario: ");
+    Console.WriteLine($"Mostrando detalle del usuario con ID/documento: {id}");
+    Pause();
+}
+
+void UpdateUserMenu()
+{
+    string option;
+    do
+    {
+        Console.Clear();
+        Console.WriteLine("===== ACTUALIZAR USUARIO =====");
+        Console.WriteLine("1. Editar nombre");
+        Console.WriteLine("2. Editar contacto");
+        Console.WriteLine("3. Activar / desactivar");
+        Console.WriteLine("0. Volver");
+        option = ReadOption();
+
+        switch (option)
+        {
+            case "1": EditUserName(); break;
+            case "2": EditUserContact(); break;
+            case "3": ToggleUserActiveStatus(); break;
+            case "0": break;
+            default: InvalidOption(); break;
+        }
+    } while (option != "0");
+}
+
+void EditUserName()
+{
+    string newName = ReadText("Nuevo nombre: ");
+    Console.WriteLine($"Nombre actualizado a: {newName}");
+    Pause();
+}
+
+void EditUserContact()
+{
+    string newContact = ReadText("Nuevo contacto (teléfono/email): ");
+    Console.WriteLine($"Contacto actualizado a: {newContact}");
+    Pause();
+}
+
+void ToggleUserActiveStatus()
+{
+    string id = ReadText("ID/documento del usuario: ");
+    Console.WriteLine($"Estado del usuario {id} cambiado (activo/inactivo).");
+    Pause();
+}
+
+void DeleteUser()
+{
+    string id = ReadText("ID/documento del usuario a eliminar: ");
+    Console.WriteLine("Validando que no tenga préstamos activos...");
+    Console.WriteLine($"Usuario {id} eliminado.");
+    Pause();
+}
