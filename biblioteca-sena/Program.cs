@@ -588,3 +588,16 @@ void ResetData()
         Console.WriteLine("Operación cancelada.");
     Pause();
 }
+// ===================== 6) SALIR =====================
+void ConfirmExitAndSave()
+{
+    Console.Write("¿Guardar antes de salir? (S/N): ");
+    string answer = (Console.ReadLine() ?? "").Trim().ToUpper();
+
+    if (answer == "S")
+        Console.WriteLine("Datos guardados.");
+    else
+        Console.WriteLine("Saliendo sin guardar.");
+
+    Console.WriteLine("¡Hasta pronto!");
+}
