@@ -52,4 +52,21 @@ public class UsuarioService
     {
         return usuarios.OrderBy(u => u.Nombre).ToList();
     }
+    // Total de usuarios
+public int TotalUsuarios()
+{
+    return usuarios.Count;
+}
+
+// Usuarios activos
+public int UsuariosActivos()
+{
+    return usuarios.Count(u => u.Activo);
+}
+
+// Usuarios inactivos
+public int UsuariosInactivos()
+{
+    return usuarios.Count(u => !u.Activo);
+}
 }
