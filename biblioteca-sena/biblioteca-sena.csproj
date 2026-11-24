@@ -6,6 +6,7 @@
     <RootNamespace>biblioteca_sena</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <UseAppHost>false</UseAppHost>
   </PropertyGroup>
 
 </Project>
