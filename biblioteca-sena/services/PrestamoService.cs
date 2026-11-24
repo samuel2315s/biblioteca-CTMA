@@ -109,4 +109,48 @@ public class PrestamoService
             }
         }
     }
+    // Total de préstamos
+public int TotalPrestamos()
+{
+    return prestamos.Count;
+}
+
+// Préstamos activos
+public int PrestamosActivos()
+{
+    ActualizarEstados();
+
+    return prestamos.Count(p =>
+        p.Estado == EstadoPrestamo.Activo);
+}
+
+// Préstamos vencidos
+public int PrestamosVencidos()
+{
+    ActualizarEstados();
+
+    return prestamos.Count(p =>
+        p.Estado == EstadoPrestamo.Vencido);
+}
+
+// Préstamos devueltos
+public int PrestamosDevueltos()
+{
+    ActualizarEstados();
+
+    return prestamos.Count(p =>
+        p.Estado == EstadoPrestamo.Devuelto);
+}
+
+// Promedio de días de préstamo
+public double PromedioDiasPrestamo()
+{
+    if (prestamos.Count == 0)
+    {
+        return 0;
+    }
+
+    return prestamos.Average(p =>
+        p.DiasTranscurridos());
+}
 }
